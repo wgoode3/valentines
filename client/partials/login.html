@@ -1,0 +1,12 @@
+<h4>Welcome!<br>Please enter your name to send valentines.</h4>
+<div ng-controller='loginController'>
+  <form ng-submit="login()">
+    name: <input type="text" ng-model='user.name' placeholder="your name..."><br>
+    <input type="submit" value = 'Login'>
+  </form>
+
+  <div ng-if="errors" style="background-color: red; color:white; width: 50%; text-align: center; padding: 10px;">
+  	<h3 ng-repeat="error in errors">{{error.message}}</h3>
+  </div>
+
+</div>

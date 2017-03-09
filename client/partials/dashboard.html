@@ -1,0 +1,42 @@
+<div ng-controller='dashboardController'>
+	
+	<h2>Welcome, {{user.name}}!</h2>
+
+	<button ng-click='logout()'>logout</button>
+
+	<form>
+		Search: <input type="text" ng-model='search'>
+	</form>
+
+	<h3>Your valentines:</h3>
+	<table>
+		<tr>
+			<th>Name:</th>
+			<th>Sent on:</th>
+			<th>Action:</th>
+		</tr>
+		<tr ng-repeat="val in receivedValentines | orderBy:'-createdAt' | filter:search">
+			<td ng-bind='val.viewed? "val._from.name": "???"'></td>
+			<td>{{val.createdAt | date:'short'}}</td>
+			<td><a href='#!/valentine/{{val._id}}'><button>show</button></a></td>
+		</tr>
+	</table>
+	<h3>Sent valentines:</h3>
+	<table>
+		<tr>
+			<th>Name:</th>
+			<th>Sent on:</th>
+			<th>Action:</th>
+		</tr>
+		<tr ng-repeat="val in sentValentines | orderBy:'-createdAt' | filter:search">
+			<td>{{val._to.name}}</td>
+			<td>{{val.createdAt | date:'short'}}</td>
+			<td><a href='#!/valentine/{{val._id}}'><button>show</button></a></td>
+		</tr>
+	</table>
+	<h3>Send another valentine:</h3>
+	<ul>
+		<li ng-repeat='user in otherUsers | filter:search'><a href='#!/valentine/{{user._id}}/new'>{{user.name}}</a></li>
+	</ul>
+
+</div>

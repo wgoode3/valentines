@@ -1,0 +1,14 @@
+<div ng-controller='valentineController'>
+
+	<h2>Welcome, {{user.name}}!</h2>
+
+	<button ng-click='logout()'>logout</button>
+
+	<h3>Valentine from {{valentine._from.name}}:</h3>
+
+	<p>{{valentine.message}}</p>
+
+	<a ng-if='valentine._from._id != user.id' href='#!/valentine/{{valentine._from._id}}/new'><button>Send a valentine to {{valentine._from.name}}?</button></a>
+	<a href='#!/dashboard'><button>Back</button></a>
+	
+</div>

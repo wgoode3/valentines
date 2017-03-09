@@ -1,0 +1,14 @@
+<div ng-controller='newController'>
+	<h2>Welcome, {{user.name}}!</h2>
+	<button ng-click='logout()'>logout</button>
+
+	<h2>Send a valentine to: {{user_to.name}}</h2>
+	<form>
+		<textarea ng-model='valentine.message' placeholder='Enter message here...'></textarea>
+		<input type="submit" value="Send" ng-click='sendValentine(user_to._id)'>
+		<a href='/#!/dashboard'><button>Cancel</button></a>
+	</form>
+
+	<h4 ng-if='errors'>{{errors.message}}</h4>
+
+</div>
